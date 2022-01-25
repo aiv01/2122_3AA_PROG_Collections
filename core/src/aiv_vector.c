@@ -3,7 +3,8 @@
 
 aiv_vector_t *aiv_vector_new()
 {
-    return (aiv_vector_t*)malloc(sizeof(aiv_vector_t));
+    aiv_vector_t *vector = (aiv_vector_t*)malloc(sizeof(aiv_vector_t));
+    return vector;
 }
 
 void aiv_vector_free(aiv_vector_t *vector)
