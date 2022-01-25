@@ -15,7 +15,10 @@ aiv_vector_t *aiv_vector_new()
 
 void aiv_vector_free(aiv_vector_t *vector)
 {
-    free(vector);
+    vector->count = 0;
+    free(vector->items);
+    vector->items = NULL;
+    free(vector);    
 }
 
 bool aiv_vector_is_empty(aiv_vector_t *vector)
