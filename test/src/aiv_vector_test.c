@@ -22,6 +22,22 @@ CLOVE_TEST(AppendOneElement) {
     int a = 5;
     aiv_vector_append(vector, &a);
     CLOVE_IS_FALSE(aiv_vector_is_empty(vector));
+    CLOVE_PTR_EQ(&a, *vector->items);
+    
+    aiv_vector_free(vector);
+}
+
+CLOVE_TEST(AppendTwoElements){
+
+    aiv_vector_t *vector = aiv_vector_new();
+    int a = 5;
+    int b = 15;
+    aiv_vector_append(vector, &a);
+    aiv_vector_append(vector, &b);
+
+    CLOVE_PTR_EQ(&a, vector->items[0]);
+    CLOVE_PTR_EQ(&b, vector->items[1]);
+
     aiv_vector_free(vector);
 }
 

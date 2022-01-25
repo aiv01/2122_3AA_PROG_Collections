@@ -8,7 +8,8 @@ aiv_vector_t *aiv_vector_new()
     {
         return NULL;
     }
-    vector->value = NULL;
+    vector->count = 0;
+    vector->items = NULL;
     return vector;
 }
 
@@ -19,10 +20,12 @@ void aiv_vector_free(aiv_vector_t *vector)
 
 bool aiv_vector_is_empty(aiv_vector_t *vector)
 {
-    return vector->value == NULL;
+    return vector->items == NULL;
 }
 
 void aiv_vector_append(aiv_vector_t *vector, void *value)
 {
-    vector->value = value;
+    vector->items = realloc(vector->items, sizeof(void*) * (vector->count +1));
+    vector->items[vector->count] = value;
+    vector->count++;
 }

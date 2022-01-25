@@ -3,7 +3,8 @@
 
 typedef struct aiv_vector
 {
-    void *value;
+    void **items;
+    int count;
 }aiv_vector_t;
 
 
