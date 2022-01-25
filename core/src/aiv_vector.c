@@ -11,3 +11,8 @@ void aiv_vector_free(aiv_vector_t *vector)
 {
     free(vector);
 }
+
+bool aiv_vector_is_empty(aiv_vector_t *vector)
+{
+    return true;
+}

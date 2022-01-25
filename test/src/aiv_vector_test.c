@@ -9,6 +9,12 @@ CLOVE_TEST(CreateVector) {
     aiv_vector_free(vector);
 }
 
+CLOVE_TEST(CheckIfVectorIsEmptyAfterCreation) {
+
+    aiv_vector_t *vector = aiv_vector_new();
+    CLOVE_IS_TRUE(aiv_vector_is_empty(vector));
+    aiv_vector_free(vector);
+}
 
 /*
 #include "clove.h"

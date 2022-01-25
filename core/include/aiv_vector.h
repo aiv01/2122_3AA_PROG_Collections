@@ -1,4 +1,5 @@
 #pragma once
+#include <stdbool.h>
 
 typedef struct aiv_vector
 {
@@ -18,3 +19,9 @@ aiv_vector_t *aiv_vector_new();
  * @param vector vector to free
 */
 void aiv_vector_free(aiv_vector_t *vector);
+
+/*
+ * check if the given vector is empty
+ * @param vector the vector to be checked
+*/
+bool aiv_vector_is_empty(aiv_vector_t *vector);
