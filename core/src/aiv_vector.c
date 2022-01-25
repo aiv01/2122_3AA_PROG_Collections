@@ -29,3 +29,12 @@ void aiv_vector_append(aiv_vector_t *vector, void *value)
     vector->items[vector->count] = value;
     vector->count++;
 }
+
+void* aiv_vector_at(aiv_vector_t *vector, int index)
+{
+    if (index < 0 || index >= vector->count)
+    {
+        return NULL;
+    }
+    return vector->items[index];
+}

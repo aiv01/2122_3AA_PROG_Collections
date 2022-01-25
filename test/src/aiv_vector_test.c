@@ -41,6 +41,27 @@ CLOVE_TEST(AppendTwoElements){
     aiv_vector_free(vector);
 }
 
+CLOVE_TEST(GetFirstElement){
+    aiv_vector_t *vector = aiv_vector_new();
+    int a = 5;
+    aiv_vector_append(vector, &a);
+
+    CLOVE_PTR_EQ(&a, aiv_vector_at(vector, 0));
+
+    aiv_vector_free(vector);
+}
+
+CLOVE_TEST(GetElementOutOfRange){
+    aiv_vector_t *vector = aiv_vector_new();
+    int a = 5;
+    aiv_vector_append(vector, &a);
+
+    CLOVE_NULL(aiv_vector_at(vector, -1));
+    CLOVE_NULL(aiv_vector_at(vector, 2));
+
+    aiv_vector_free(vector);
+}
+
 /*
 #include "clove.h"
 

@@ -34,3 +34,12 @@ bool aiv_vector_is_empty(aiv_vector_t *vector);
  * @param value The pointer of the value to append 
  */
 void aiv_vector_append(aiv_vector_t *vector, void *value);
+
+/*
+ * retrieve the value at index
+ * 
+ * @param vector The vector where search value
+ * @param index The index element in vector
+ * @return the value in vector at given index or NULL if index is out of range
+ */
+void* aiv_vector_at(aiv_vector_t *vector, const int index);
