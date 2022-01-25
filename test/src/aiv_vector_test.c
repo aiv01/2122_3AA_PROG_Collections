@@ -16,6 +16,15 @@ CLOVE_TEST(CheckIfVectorIsEmptyAfterCreation) {
     aiv_vector_free(vector);
 }
 
+CLOVE_TEST(AppendOneElement) {
+
+    aiv_vector_t *vector = aiv_vector_new();
+    int a = 5;
+    aiv_vector_append(vector, &a);
+    CLOVE_IS_FALSE(aiv_vector_is_empty(vector));
+    aiv_vector_free(vector);
+}
+
 /*
 #include "clove.h"
 

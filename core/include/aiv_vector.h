@@ -3,7 +3,7 @@
 
 typedef struct aiv_vector
 {
-    int p;
+    void *value;
 }aiv_vector_t;
 
 
@@ -25,3 +25,11 @@ void aiv_vector_free(aiv_vector_t *vector);
  * @param vector the vector to be checked
 */
 bool aiv_vector_is_empty(aiv_vector_t *vector);
+
+/*
+ * append a value to the vector
+ *
+ * @param vector The vector to append the new value
+ * @param value The pointer of the value to append 
+ */
+void aiv_vector_append(aiv_vector_t *vector, void *value);
