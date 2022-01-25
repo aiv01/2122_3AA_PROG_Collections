@@ -1,5 +1,12 @@
+#define CLOVE_ENABLE_AUTODISCOVERY
+#include "clove-experimental.h"
+
+CLOVE_RUNNER();
+
+
+/*
 #include "clove.h"
 
-int main() {
-    
-}
+CLOVE_SUITE_DECL(ManualSuite);
+CLOVE_RUNNER(ManualSuite);
+*/
