@@ -1,0 +1,23 @@
+#define CLOVE_SUITE_NAME VectorTest
+#include "clove-experimental.h"
+#include "aiv_vector.h"
+
+CLOVE_TEST(CreateVector) {
+
+    aiv_vector_t *vector = aiv_vector_new();
+    CLOVE_NOT_NULL(vector);
+    aiv_vector_free(vector);
+}
+
+
+/*
+#include "clove.h"
+
+CLOVE_TEST(FirstManualTest) {
+    CLOVE_PASS();
+}
+
+CLOVE_SUITE(ManualSuite) {
+    CLOVE_SUITE_TESTS(FirstManualTest);
+}
+*/
