@@ -1,10 +1,26 @@
 #define CLOVE_SUITE_NAME VectorTest
 #include "clove-experimental.h"
 #include "aiv_vector.h"
+#include "test_utils.h"
 
- aiv_vector_t *vector;
+/*
+int test_type = 1;
+
+void* __aiv_malloc(size_t v) {
+    if (test_type == 0) {
+         puts("AIV MALLOC BAD");
+        return NULL;
+    } else {
+        puts("AIV MALLOC GOOD");
+        return malloc(v);
+    }
+}
+*/
+
+aiv_vector_t *vector;
 
 CLOVE_SUITE_SETUP() {
+    test_type = 1;
     vector = aiv_vector_new();
 }
 
