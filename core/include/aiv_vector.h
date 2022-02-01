@@ -8,7 +8,7 @@ typedef struct aiv_vector_allocator_t {
 
 typedef struct aiv_vector
 {
-    void **items;
+    void* *items;
     int count;
     aiv_vector_allocator_t allocator;
 } aiv_vector_t;

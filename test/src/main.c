@@ -9,4 +9,11 @@ CLOVE_RUNNER();
 
 CLOVE_SUITE_DECL(ManualSuite);
 CLOVE_RUNNER(ManualSuite);
+
+
+int main() {
+    void** items = NULL;
+
+    if (items == NULL) puts("NULL");
+}
 */
