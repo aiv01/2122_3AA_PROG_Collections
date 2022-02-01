@@ -3,19 +3,22 @@
 #include "aiv_memory.h"
 
 aiv_vector_t *aiv_vector_new()
-{
-    return aiv_vector_new_with_alloc(malloc, realloc);
+{   
+    aiv_vector_allocator_t real_allocator;
+    real_allocator.malloc_func = malloc;
+    real_allocator.realloc_func = realloc;
+    return aiv_vector_new_with_alloc(real_allocator);
 }
 
-aiv_vector_t* aiv_vector_new_with_alloc(void* (*malloc_func)(size_t), void* (*realloc_func)(void*, size_t)) {
-    aiv_vector_t *vector = (aiv_vector_t *)malloc_func(sizeof(aiv_vector_t));
+aiv_vector_t* aiv_vector_new_with_alloc(aiv_vector_allocator_t allocator) {
+    aiv_vector_t *vector = (aiv_vector_t *)allocator.malloc_func(sizeof(aiv_vector_t));
     if (vector == NULL)
     {
         return NULL;
     }
     vector->count = 0;
     vector->items = NULL;
-    vector->realloc_func = realloc_func;
+    vector->allocator = allocator;
     return vector;
 }
 
@@ -36,7 +39,8 @@ bool aiv_vector_is_empty(aiv_vector_t *vector)
 
 void aiv_vector_append(aiv_vector_t *vector, void *value)
 {   
-    void* new_item = vector->realloc_func(vector->items, sizeof(void*) * (vector->count +1));
+    //void* new_item = vector->allocator.future_size_will_be(vector->count + 1);
+    void* new_item = vector->allocator.realloc_func(vector->items, sizeof(void*) * (vector->count +1));
     if (!new_item)  {
         return;
     }

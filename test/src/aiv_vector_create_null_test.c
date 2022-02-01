@@ -13,12 +13,14 @@ static void* bad_realloc(void* block, size_t value) {
 }
 
 CLOVE_TEST(CreateVectorWithFailingMalloc) {
-    aiv_vector_t *vector = aiv_vector_new_with_alloc(bad_alloc, bad_realloc);
+    aiv_vector_allocator_t bad_allocator = {bad_alloc, bad_realloc};
+    aiv_vector_t *vector = aiv_vector_new_with_alloc(bad_allocator);
     CLOVE_NULL(vector);
 }
 
 CLOVE_TEST(CreateVectorWithFailingRealloc) {
-    aiv_vector_t *vector = aiv_vector_new_with_alloc(__aiv_malloc, bad_realloc);
+    aiv_vector_allocator_t half_bad_allocator = {malloc, bad_realloc};
+    aiv_vector_t *vector = aiv_vector_new_with_alloc(half_bad_allocator);
     
     void** items_ptr_before_append = vector->items;
 

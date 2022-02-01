@@ -1,11 +1,16 @@
 #pragma once
 #include <stdbool.h>
 
+typedef struct aiv_vector_allocator_t {
+    void* (*malloc_func)(size_t);
+    void* (*realloc_func)(void*, size_t);
+} aiv_vector_allocator_t;
+
 typedef struct aiv_vector
 {
     void **items;
     int count;
-    void* (*realloc_func)(void*, size_t);
+    aiv_vector_allocator_t allocator;
 } aiv_vector_t;
 
 
@@ -15,7 +20,7 @@ typedef struct aiv_vector
 */
 aiv_vector_t *aiv_vector_new();
 
-aiv_vector_t* aiv_vector_new_with_alloc(void* (*malloc_func)(size_t), void* (*realloc_func)(void*, size_t));
+aiv_vector_t* aiv_vector_new_with_alloc(aiv_vector_allocator_t allocator);
 
 /*
  * destroy a allocated vector structure
