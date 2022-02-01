@@ -5,7 +5,8 @@ typedef struct aiv_vector
 {
     void **items;
     int count;
-}aiv_vector_t;
+    void* (*realloc_func)(void*, size_t);
+} aiv_vector_t;
 
 
 /*
@@ -14,6 +15,7 @@ typedef struct aiv_vector
 */
 aiv_vector_t *aiv_vector_new();
 
+aiv_vector_t* aiv_vector_new_with_alloc(void* (*malloc_func)(size_t), void* (*realloc_func)(void*, size_t));
 
 /*
  * destroy a allocated vector structure
