@@ -1,9 +1,10 @@
 #include "aiv_vector.h"
 #include <stdlib.h>
+#include "aiv_memory.h"
 
 aiv_vector_t *aiv_vector_new()
 {
-    aiv_vector_t *vector = (aiv_vector_t *)malloc(sizeof(aiv_vector_t));
+    aiv_vector_t *vector = (aiv_vector_t *)__aiv_malloc(sizeof(aiv_vector_t));
     if (vector == NULL)
     {
         return NULL;

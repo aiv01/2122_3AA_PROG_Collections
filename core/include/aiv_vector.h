@@ -43,10 +43,3 @@ void aiv_vector_append(aiv_vector_t *vector, void *value);
  * @return the value in vector at given index or NULL if index is out of range
  */
 void* aiv_vector_at(aiv_vector_t *vector, const int index);
-
-#ifdef _TEST
-    void* __aiv_malloc(size_t v);
-    #define malloc __aiv_malloc
-#else
-    //nothing to do, use predefined implementation
-#endif
